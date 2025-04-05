@@ -8,9 +8,13 @@ from django_rest_passwordreset.signals import reset_password_token_created
 
 from backend.models import ConfirmEmailToken, User
 
-new_user_registered = Signal()
+new_user_registered = Signal(
+    providing_args=['user_id'],
+)
 
-new_order = Signal()
+new_order = Signal(
+providing_args=['user_id'],
+)
 
 
 @receiver(reset_password_token_created)
@@ -50,13 +54,13 @@ def new_user_registered_signal(sender: Type[User], instance: User, created: bool
 
         msg = EmailMultiAlternatives(
             # title:
-            f"Password Reset Token for {instance.email}",
+            f"Password Reset Token for {token.user.email}",
             # message:
             token.key,
             # from:
             settings.EMAIL_HOST_USER,
             # to:
-            [instance.email]
+            [token.user.email]
         )
         msg.send()
 

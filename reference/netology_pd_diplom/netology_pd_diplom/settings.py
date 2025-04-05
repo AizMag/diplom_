@@ -78,11 +78,18 @@ WSGI_APPLICATION = 'netology_pd_diplom.wsgi.application'
 
 DATABASES = {
 
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+  #  'default': {
+   #     'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   # }
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'diplom_db',
+        'USER': 'diplom_user',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
     }
-
 
 }
 
@@ -130,7 +137,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 
 EMAIL_HOST_USER = 'netology.diplom@mail.ru'
-EMAIL_HOST_PASSWORD = 'CLdm7yW4U9nivz9mbexu'
+EMAIL_HOST_PASSWORD = 'i~8W4rdRPFlo'
 EMAIL_PORT = '465'
 EMAIL_USE_SSL = True
 SERVER_EMAIL = EMAIL_HOST_USER
