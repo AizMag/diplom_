@@ -3,18 +3,15 @@ from typing import Type
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
-from django.dispatch import receiver, Signal
+from django.dispatch import Signal
+from django.dispatch import receiver
 from django_rest_passwordreset.signals import reset_password_token_created
 
 from backend.models import ConfirmEmailToken, User
 
-new_user_registered = Signal(
-    providing_args=['user_id'],
-)
+new_user_registered = Signal()
 
-new_order = Signal(
-providing_args=['user_id'],
-)
+new_order = Signal()
 
 
 @receiver(reset_password_token_created)
