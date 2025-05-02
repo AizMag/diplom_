@@ -87,7 +87,8 @@ class ConfirmAccount(APIView):
 class AccountDetails(APIView):
     """
     Класс для работы данными пользователя
-    """
+    """г
+
 
     # получить данные
     def get(self, request, *args, **kwargs):

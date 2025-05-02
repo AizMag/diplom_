@@ -1,13 +1,13 @@
 # Верстальщик
 from rest_framework import serializers
 
-from backend.models import User, Category, Shop, ProductInfo, Product, ProductParameter, OrderItem, Order, Contact
+from backend.models import CustomUser, Category, Shop, ProductInfo, Product, ProductParameter, OrderItem, Order, ClientCard
 
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Contact
-        fields = ('id', 'city', 'street', 'house', 'structure', 'building', 'apartment', 'user', 'phone')
+        model = ClientCard
+        fields = ('id', 'city', 'street', 'buildings', 'apt', 'user', 'mobile')
         read_only_fields = ('id',)
         extra_kwargs = {
             'user': {'write_only': True}
@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
     contacts = ContactSerializer(read_only=True, many=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('id', 'first_name', 'last_name', 'email', 'company', 'position', 'contacts')
         read_only_fields = ('id',)
 
